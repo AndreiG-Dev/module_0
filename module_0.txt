@@ -1,0 +1,29 @@
+import numpy as np
+number = np.random.randint(1,101)    # загадали число
+print ("Загадано число от 1 до 100")
+
+
+def attempt_counter(number):
+    '''Сначала устанавливаем попытку угадать guess равной половине от максимального возможного числа.
+       Затем уменьшаем или увеличиваем его на guess_corrector, который за каждую попытку уменьшается в 2 раза.
+       Функция принимает загаданное число и возвращает число попыток'''
+    attempts = 1                      # счетчик попыток
+    min_number = 1
+    max_number = 100
+    guess = (min_number+max_number) // 2
+    guess_corrector= (min_number+max_number) // 2
+    
+    while number != guess:
+        attempts += 1
+        guess_corrector //= 2         
+        if guess_corrector == 0:      # в случае если guess_corrector = 0, присваиваем значение 1
+            guess_corrector = 1
+        if number > guess:
+            guess += guess_corrector
+        elif number < guess:
+            guess -= guess_corrector
+            
+    return(attempts) # выход из цикла, если угадали
+
+
+print (f"Вы угадали число {number} за {attempt_counter(number)} попыток.")
