@@ -11,7 +11,7 @@ def attempt_counter(number):
     min_number = 1
     max_number = 100
     guess = (min_number+max_number) // 2
-    guess_corrector= (min_number+max_number) // 2
+    guess_corrector = (min_number+max_number) // 2
     
     while number != guess:
         attempts += 1
